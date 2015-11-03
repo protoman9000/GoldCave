@@ -25,12 +25,10 @@ namespace GoldCave
 
             for (int x = 1; x <= gPieces; x++)
             {
-                int section = 0;
                 Console.WriteLine("Enter the in gold piece number {0}", x);
                 string piece = Console.ReadLine();
                 float piece2 = float.Parse(piece);
                 goldList.Add(piece2);
-                section++;
             }
 
             Console.WriteLine("This is a test");
