@@ -15,10 +15,9 @@ namespace GoldCave
             Console.WriteLine("You are about to enter the golden cave...");
             Console.WriteLine("You are wearing a backpack. How much does your backpack weight?");
             
-            //Convert the weight into decimals
+            //Convert the weight into float
             string backpack = Console.ReadLine();
-            int gBackpack = Convert.ToInt16(backpack);
-            decimal gBackpack2 = decimal.Round(7, gBackpack);
+            float gBackpack = float.Parse(backpack);
 
             //Checking to see how many gold nuggets there are
             Console.WriteLine("How many gold nuggets do you see?");
