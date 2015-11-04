@@ -35,7 +35,22 @@ namespace GoldCave
                 goldList.Add(piece2);
             }
 
-            Console.WriteLine("This is a test");
+            //sort the list and put into a new list
+            var result = goldList.OrderByDescending(a => a);
+
+            List<float> goldList2 = new List<float>();
+
+            foreach (var item in result)
+            {
+                goldList2.Add(item);
+            }
+
+            for (int i = 0; i <= gPieces; i++)
+            {
+                float finalGold =+ goldList2[i];
+            }
+
+                Console.WriteLine("This is a test");
 
         }
     }
