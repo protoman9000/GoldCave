@@ -45,7 +45,7 @@ namespace GoldCave
                 goldList2.Add(item);
             }
 
-            for (int i = 0; i <= gPieces; i++)
+            for (int i = 0; i < gPieces; i++)
             {
                 float finalGold =+ goldList2[i];
                 if (finalGold > gBackpack)
