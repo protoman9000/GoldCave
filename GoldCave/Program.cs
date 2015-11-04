@@ -48,6 +48,11 @@ namespace GoldCave
             for (int i = 0; i <= gPieces; i++)
             {
                 float finalGold =+ goldList2[i];
+                if (finalGold > gBackpack)
+                {
+                    finalGold = -goldList2[i];
+                    continue;
+                }
             }
 
                 Console.WriteLine("This is a test");
