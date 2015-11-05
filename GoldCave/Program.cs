@@ -49,10 +49,10 @@ namespace GoldCave
 
             for (int i = 0; i < gPieces; i++)
             {
-                finalGold =+ goldList2[i];
+                finalGold += goldList2[i];
                 if (finalGold > gBackpack)
                 {
-                    finalGold =- goldList2[i];
+                    finalGold -= goldList2[i];
                     continue;
                 }
                 else
@@ -62,15 +62,14 @@ namespace GoldCave
             }
 
             //Output
-            Console.WriteLine(gBackpack);
-            Console.WriteLine(gPieces);
+            Console.WriteLine("");
             Console.WriteLine(finalGold);
             foreach (float k in goldList3)
             {
                 Console.WriteLine(k);
             }
 
-                Console.WriteLine("This is a test");
+            Console.WriteLine("This is a test");
 
         }
     }
