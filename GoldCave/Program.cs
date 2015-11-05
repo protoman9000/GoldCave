@@ -9,6 +9,15 @@ namespace GoldCave
 {
     class Program
     {
+        public IEnumerable<IEnumerable<T>> combinationList<T>(List<T> list)
+        {
+            return from m in Enumerable.Range(0, 1 << list.Count)
+                   select
+                   from k in Enumerable.Range(0, list.Count)
+                   where (m & (1 << k)) != 0
+                   select list[k];
+        }
+
         static void Main(string[] args)
         {
             //Intro about the gold cave.
@@ -46,6 +55,8 @@ namespace GoldCave
             {
                 goldList2.Add(item);
             }
+
+            
 
             for (int i = 0; i < gPieces; i++)
             {
