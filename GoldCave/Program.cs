@@ -39,6 +39,8 @@ namespace GoldCave
             var result = goldList.OrderByDescending(a => a);
 
             List<float> goldList2 = new List<float>();
+            List<float> goldList3 = new List<float>();
+            float finalGold = 0;
 
             foreach (var item in result)
             {
@@ -47,12 +49,25 @@ namespace GoldCave
 
             for (int i = 0; i < gPieces; i++)
             {
-                float finalGold =+ goldList2[i];
+                finalGold =+ goldList2[i];
                 if (finalGold > gBackpack)
                 {
-                    finalGold = -goldList2[i];
+                    finalGold =- goldList2[i];
                     continue;
                 }
+                else
+                {
+                    goldList3.Add(goldList2[i]);
+                }
+            }
+
+            //Output
+            Console.WriteLine(gBackpack);
+            Console.WriteLine(gPieces);
+            Console.WriteLine(finalGold);
+            foreach (float k in goldList3)
+            {
+                Console.WriteLine(k);
             }
 
                 Console.WriteLine("This is a test");
