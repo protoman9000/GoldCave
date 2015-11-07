@@ -9,7 +9,7 @@ namespace GoldCave
 {
     class Program
     {
-        public IEnumerable<IEnumerable<T>> combinationList<T>(List<T> list)
+        static IEnumerable<IEnumerable<T>> combinationList<T>(List<T> list)
         {
             return from m in Enumerable.Range(0, 1 << list.Count)
                    select
@@ -44,20 +44,24 @@ namespace GoldCave
                 goldList.Add(piece2);
             }
 
+            IEnumerable<IEnumerable<float>> result2 = combinationList<float>(goldList);
+
             //sort the list and put into a new list
-            var result = goldList.OrderByDescending(a => a);
 
             List<float> goldList2 = new List<float>();
-            List<float> goldList3 = new List<float>();
-            float finalGold = 0;
 
-            foreach (var item in result)
+            foreach (var set in result2.Single())
             {
-                goldList2.Add(item);
+                goldList2.Add(set);
             }
 
-            
 
+
+
+
+
+
+            /*
             for (int i = 0; i < gPieces; i++)
             {
                 finalGold += goldList2[i];
@@ -79,7 +83,7 @@ namespace GoldCave
             {
                 Console.WriteLine(k);
             }
-
+            */
             Console.WriteLine("This is a test");
 
         }
