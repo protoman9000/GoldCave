@@ -9,15 +9,22 @@ namespace GoldCave
 {
     class Program
     {
-        static IEnumerable<IEnumerable<T>> combinationList<T>(List<T> list)
+        static void createCombination(List<float> list)
         {
-            return from m in Enumerable.Range(0, 1 << list.Count)
-                   select
-                   from k in Enumerable.Range(0, list.Count)
-                   where (m & (1 << k)) != 0
-                   select list[k];
+            double count = Math.Pow(2, list.Count);
+            for (int i = 1; i <= count - 1; i++)
+            {
+                string str = Convert.ToString(i, 2).PadLeft(list.Count, '0');
+                for (int j = 0; j < str.Length; j++)
+                {
+                    if (str[j] == '1')
+                    {
+                        Console.Write(list[j]);
+                    }
+                }
+                Console.WriteLine();
+            }
         }
-
         static void Main(string[] args)
         {
             //Intro about the gold cave.
@@ -44,46 +51,14 @@ namespace GoldCave
                 goldList.Add(piece2);
             }
 
-            IEnumerable<IEnumerable<float>> result2 = combinationList<float>(goldList);
+
 
             //sort the list and put into a new list
 
-            List<float> goldList2 = new List<float>();
+            List<List<float>> goldList2 = new List<List<float>>();
 
-            foreach (var set in result2.Single())
-            {
-                goldList2.Add(set);
-            }
+           
 
-
-
-
-
-
-
-            /*
-            for (int i = 0; i < gPieces; i++)
-            {
-                finalGold += goldList2[i];
-                if (finalGold > gBackpack)
-                {
-                    finalGold -= goldList2[i];
-                    continue;
-                }
-                else
-                {
-                    goldList3.Add(goldList2[i]);
-                }
-            }
-
-            //Output
-            Console.WriteLine("");
-            Console.WriteLine(finalGold);
-            foreach (float k in goldList3)
-            {
-                Console.WriteLine(k);
-            }
-            */
             Console.WriteLine("This is a test");
 
         }
