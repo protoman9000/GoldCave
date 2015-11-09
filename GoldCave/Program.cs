@@ -9,22 +9,37 @@ namespace GoldCave
 {
     class Program
     {
-        static void createCombination(List<float> list)
+        private static void swap(ref float a, ref float b)
         {
-            double count = Math.Pow(2, list.Count);
-            for (int i = 1; i <= count - 1; i++)
+            if (a == b)
+                return;
+
+            a ^= b;
+            b ^= a;
+            a ^= b;
+        }
+
+        public static void getPer(float[] list)
+        {
+            int x = list.Length - 1;
+            getPer(list, 0, x);
+        }
+
+        private static void getPer(float[] list, int k, int m)
+        {
+            if (k == m)
             {
-                string str = Convert.ToString(i, 2).PadLeft(list.Count, '0');
-                for (int j = 0; j < str.Length; j++)
+                Console.Write(list);
+            }
+            else
+            {
+                for (int i = k; i <= m; i++)
                 {
-                    if (str[j] == '1')
-                    {
-                        Console.Write(list[j]);
-                    }
+                    swap(list[k], list[i]);
                 }
-                Console.WriteLine();
             }
         }
+
         static void Main(string[] args)
         {
             //Intro about the gold cave.
@@ -54,7 +69,9 @@ namespace GoldCave
 
 
             //sort the list and put into a new list
-
+            
+            
+            
             List<List<float>> goldList2 = new List<List<float>>();
 
            
