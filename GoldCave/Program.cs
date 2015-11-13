@@ -18,14 +18,24 @@ namespace GoldCave
 
         static void setCombination(List<float> list, float bp)
         {
-            for (int x = 0; x < list.Count; x++)
+            double set = Math.Pow(2, list.Count);
+            double set2 = 0;
+            while (set2 < set - 1)
             {
-                float carry = list[x] + list[x + 1];
-                if (carry < bp)
+                for (int x = 0; x < set; x++)
                 {
-
+                    int k = 0;
+                    float carry = list[k] + list[k + 1];
+                    k++;
+                    while (carry < bp)
+                    {
+                        k++;
+                        carry += list[k]; 
+                    }
+                    float tmp = carry;
                 }
             }
+            
         }
 
         static void Main(string[] args)
@@ -54,7 +64,7 @@ namespace GoldCave
                 goldList.Add(piece2);
             }
 
-           setCombination(goldList);
+           setCombination(goldList, gBackpack);
 
             //sort the list and put into a new list
             
