@@ -9,33 +9,21 @@ namespace GoldCave
 {
     class Program
     {
-        private static void swap(ref float a, ref float b)
+        public static void Swap(List<float> list, int a, int b)
         {
-            if (a == b)
-                return;
-
-            a ^= b;
-            b ^= a;
-            a ^= b;
+            float tmp = list[a];
+            list[a] = list[b];
+            list[b] = tmp;
         }
 
-        public static void getPer(float[] list)
+        static void setCombination(List<float> list, float bp)
         {
-            int x = list.Length - 1;
-            getPer(list, 0, x);
-        }
-
-        private static void getPer(float[] list, int k, int m)
-        {
-            if (k == m)
+            for (int x = 0; x < list.Count; x++)
             {
-                Console.Write(list);
-            }
-            else
-            {
-                for (int i = k; i <= m; i++)
+                float carry = list[x] + list[x + 1];
+                if (carry < bp)
                 {
-                    swap(list[k], list[i]);
+
                 }
             }
         }
@@ -66,13 +54,13 @@ namespace GoldCave
                 goldList.Add(piece2);
             }
 
-
+           setCombination(goldList);
 
             //sort the list and put into a new list
             
             
             
-            List<List<float>> goldList2 = new List<List<float>>();
+            //List<List<float>> goldList2 = new List<List<float>>();
 
            
 
