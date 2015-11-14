@@ -9,15 +9,19 @@ namespace GoldCave
 {
     class Program
     {
-        public static void Swap(List<float> list, int a, int b)
+        public static void swap(List<float> list, int a, int b)
         {
             float tmp = list[a];
             list[a] = list[b];
             list[b] = tmp;
         }
 
-        static void setCombination(List<float> list, float bp)
+        static float setCombination(List<float> list, float bp)
         {
+            float tmp = 0;
+            int place1 = 0;
+            int place2 = 1;
+
             double set = Math.Pow(2, list.Count);
             double set2 = 0;
             while (set2 < set - 1)
@@ -27,15 +31,28 @@ namespace GoldCave
                     int k = 0;
                     float carry = list[k] + list[k + 1];
                     k++;
-                    while (carry < bp)
+                    
+                    while (carry < bp && k < list.Count)
                     {
                         k++;
                         carry += list[k]; 
                     }
-                    float tmp = carry;
+                    
+                    if(carry > tmp)
+                        tmp = carry;
+                    
+                    
+                    swap(list, place1, place2);
+                    place1++;
+                    place2++;
+
+                    if (place1 < list.Count)
+                        place1 = 0;
+                    if (place2 > list.Count)
+                        place2 = 1;                   
                 }
             }
-            
+            return tmp;
         }
 
         static void Main(string[] args)
@@ -64,10 +81,11 @@ namespace GoldCave
                 goldList.Add(piece2);
             }
 
-           setCombination(goldList, gBackpack);
+            float answer = setCombination(goldList, gBackpack);
 
-            //sort the list and put into a new list
-            
+            Console.WriteLine(answer);
+
+
             
             
             //List<List<float>> goldList2 = new List<List<float>>();
