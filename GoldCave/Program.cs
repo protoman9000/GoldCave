@@ -29,13 +29,13 @@ namespace GoldCave
                 for (int x = 0; x < set; x++)
                 {
                     int k = 0;
-                    float carry = list[k] + list[k + 1];
+                    float carry = list[k];
                     k++;
-                    
+
                     while (carry < bp && k < list.Count)
                     {
+                        carry += list[k];
                         k++;
-                        carry += list[k]; 
                     }
                     
                     if(carry > tmp)
