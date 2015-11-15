@@ -23,44 +23,48 @@ namespace GoldCave
             int place2 = 1;
 
             double set = Math.Pow(2, list.Count);
-            double set2 = 0;
-            while (set2 < set - 1)
+            int count = 0;
+            while (count != set)
             {
-                for (int x = 0; x < set; x++)
+                int k = 0;
+                float carry = list[k];
+                k++;
+
+                while (carry < bp && k < list.Count)
                 {
-                    int k = 0;
-                    float carry = list[k];
-                    k++;
-
-                    while (carry < bp && k < list.Count)
+                    if (carry < bp)
                     {
-                        carry += list[k];
-                        k++;
+                        if (carry > tmp)
+                        {
+                            tmp = carry;
+                        }
                     }
-                    
-                    if(carry > tmp)
-                        tmp = carry;
-                    
-                    
-                    swap(list, place1, place2);
-                    place1++;
-                    place2++;
-
-                    if (place1 < list.Count)
-                        place1 = 0;
-                    if (place2 > list.Count)
-                        place2 = 1;                   
+                    carry += list[k];
+                    k++;
                 }
+
+                swap(list, place1, place2);
+                place1++;
+                place2++;
+
+                if (place1 >= list.Count)
+                    place1 = 0;
+                if (place2 >= list.Count)
+                    place2 = 1;
+
+                carry = 0;
+                count++;
             }
             return tmp;
         }
+
 
         static void Main(string[] args)
         {
             //Intro about the gold cave.
             Console.WriteLine("You are about to enter the golden cave...");
             Console.WriteLine("You are wearing a backpack. How much does your backpack weight?");
-            
+
             //Convert the weight into float
             string backpack = Console.ReadLine();
             float gBackpack = float.Parse(backpack);
@@ -85,15 +89,10 @@ namespace GoldCave
 
             Console.WriteLine(answer);
 
-
-            
-            
             //List<List<float>> goldList2 = new List<List<float>>();
-
-           
-
-            Console.WriteLine("This is a test");
+            Console.ReadKey();
 
         }
+
     }
 }
