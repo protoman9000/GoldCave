@@ -61,17 +61,25 @@ namespace GoldCave
 
         static void Main(string[] args)
         {
+            int counter = 0;
+            string line;
+
+            System.IO.StreamReader file = new System.IO.StreamReader("c:\\Users\\Aziz\\Downloads\\TestWord.txt");
+
+
+
             //Intro about the gold cave.
             Console.WriteLine("You are about to enter the golden cave...");
-            Console.WriteLine("You are wearing a backpack. How much does your backpack weight?");
+
+            string backpack = file.ReadLine();
+            Console.WriteLine("You are wearing a backpack. It weights around {0}" , backpack);
 
             //Convert the weight into float
-            string backpack = Console.ReadLine();
             float gBackpack = float.Parse(backpack);
 
-            //Checking to see how many gold nuggets there are
-            Console.WriteLine("How many gold nuggets do you see?");
-            string goldPieces = Console.ReadLine();
+            //Checking to see how many gold nuggets there are            
+            string goldPieces = file.ReadLine();
+            Console.WriteLine("There are {0} gold nuggets.", goldPieces);
             int gPieces = Convert.ToInt16(goldPieces);
 
             //adding the gold pieces to the list. 
