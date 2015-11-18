@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 
 namespace GoldCave
@@ -60,7 +61,11 @@ namespace GoldCave
 
 
         static void Main(string[] args)
-        {            
+        {
+            //Setting up a timer.
+            Stopwatch timer = new Stopwatch();
+            timer.Start();
+            
             System.IO.StreamReader file = new System.IO.StreamReader("c:\\Users\\Aziz\\Downloads\\TestWord.txt");
 
             //Intro about the gold cave.
@@ -93,6 +98,8 @@ namespace GoldCave
             float answer = setCombination(goldList, gBackpack);
 
             Console.WriteLine(answer);
+            timer.Stop();
+            Console.WriteLine(timer.Elapsed);
             Console.ReadKey();
 
         }
